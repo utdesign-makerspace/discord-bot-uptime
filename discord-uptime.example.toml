@@ -1,16 +1,27 @@
-# Make a copy of this file, rename it to discord-uptime.toml, then make edits in your newly copied file to configure your bot.
-
 discordGuildId = "your-guild-id-here"
 discordToken = "your-bot-token-here"
 
-[discordUsers.my-bot]
-userId = "some-discord-user-id"
+# serverPort is optional. if deploying with docker and updating this port, make sure to update 
+# the ports in docker-compose.yml as well
+serverPort = 7807
 
+
+# corresponding API endpoint - /users/my-other-bot
 [discordUsers.my-other-bot]
 userId = "some-other-discord-user-id"
+# this map is optional. by default, all statuses map to 200, except offline which returns a 502.
+# here, every status returns a error, except offline, which is a 200.
 statusToHttpResponseCodeMap = {
     online = 502,
     idle = 502,
     dnd = 502,
+    invisible = 502,
     offline = 200
 }
+
+
+# corresponding API endpoint - /users/my-bot
+# omitting the status map makes things simpler and should work for most usecases where you are
+# trying to track uptime using monitoring tools like better stack or uptime robot
+[discordUsers.my-bot]
+userId = "some-discord-user-id"

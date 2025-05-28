@@ -24,29 +24,29 @@ client.once(Events.ClientReady, readyClient => {
     .get("/", () => {
       return { startDate, docs: '/swagger', src: 'https://github.com/utdesign-makerspace/discord-bot-uptime'}
     })
-    .get("/bots/:id", async ({ params, status }) => {
+    .get("/users/:id", async ({ params, status }) => {
       const { id } = params;
       
-      const botConfig = config.discordUsers[id]
+      const userConfig = config.discordUsers[id]
       
-      if (!botConfig) {
-        return status(404, { error: 'Bot not found' });
+      if (!userConfig) {
+        return status(404, { error: 'User not found' });
       }
       
       const member = await guild.members.fetch({
         withPresences: true,
-        user: botConfig.userId
+        user: userConfig.userId
       })
       
       const discordData = member.toJSON()
       
       const presence = member.presence?.status
       if (!presence) {
-        return status(500, { error: 'Failed to fetch bot status. This may be because the bot was offline when this server started.' });
+        return status(500, { error: 'Failed to fetch user status. If the user is a bot, this may be because the bot was offline when this server started.' });
       }
       
-      return status(botConfig.statusToHttpResponseCodeMap[presence], {
-        id, presence, checkedAt: new Date().toISOString(), botConfig, discordData
+      return status(userConfig.statusToHttpResponseCodeMap[presence], {
+        id, presence, checkedAt: new Date().toISOString(), userConfig, discordData
       });
     })
     .use(swagger())

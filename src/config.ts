@@ -2,8 +2,6 @@ import { z } from 'zod/v4';
 
 const DiscordStatusesSchema = z.enum(['online', 'idle', 'dnd', 'offline', 'invisible'])
 
-const DiscordStatuses = DiscordStatusesSchema.enum
-
 const DiscordUserSchema = z.object({
   userId: z.string(),
   statusToHttpResponseCodeMap: z.record(DiscordStatusesSchema, z.number()).default({

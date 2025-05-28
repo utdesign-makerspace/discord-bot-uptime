@@ -1,0 +1,10 @@
+services:
+  app:
+    restart: always
+    build:
+      context: .
+      target: release
+    ports:
+      - "7807:7807"
+    volumes:
+      - './discord-uptime.toml:/usr/src/app/discord-uptime.toml'
