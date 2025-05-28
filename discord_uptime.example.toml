@@ -1,0 +1,13 @@
+discordToken = ""
+
+[discordUsers.my-bot]
+userId = "some-discord-user-id"
+
+[discordUsers.my-other-bot]
+userId = "some-other-discord-user-id"
+statusToHttpResponseCodeMap = {
+    online = 502,
+    idle = 502,
+    dnd = 502,
+    offline = 200
+}
