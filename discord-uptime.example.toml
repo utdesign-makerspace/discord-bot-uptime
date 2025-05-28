@@ -1,4 +1,7 @@
-discordToken = ""
+# Make a copy of this file, rename it to discord-uptime.toml, then make edits in your newly copied file to configure your bot.
+
+discordGuildId = "your-guild-id-here"
+discordToken = "your-bot-token-here"
 
 [discordUsers.my-bot]
 userId = "some-discord-user-id"
