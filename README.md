@@ -7,9 +7,17 @@ This tool serves an API which returns different [HTTP status codes](https://deve
 
 ## Setting up the Discord bot
 
-Create a new application at https://discord.com/developers/applications, then configure your bot as shown in these screenshots.
+Create a new application at https://discord.com/developers/applications.
 
-Afterwards, go back to the 'Installation' tab and use the link provided in the 'Install Link' section to add the bot to your server. Once installed, retrieve the bot token to include in your config, by going to the 'Bot' tab > 'Build-A-Bot' > 'Token' > 'Reset Token'.
+On the 'Bot' tab, enable the Presence Intent and the Server Members Intent. You should see something like the image below when complete.
+
+![CleanShot 2025-05-28 at 12 46 53](https://github.com/user-attachments/assets/370ffdde-83a6-4585-8793-fd9f8ed6020d)
+
+On the 'Installation' tab, under 'Installation Contexts', disable 'User Install' and in the 'Default Install Settings' section, add the `bot` scope.
+
+![CleanShot 2025-05-28 at 12 45 31](https://github.com/user-attachments/assets/6fadfcb0-4b35-4790-bb09-af02eef805fd)
+
+Oo the 'Installation' tab, use the link provided in the 'Install Link' section to add the bot to your server. Once installed, retrieve the bot token to include in your config, by going to the 'Bot' tab > 'Build-A-Bot' > 'Token' > 'Reset Token'.
 
 ## Writing config file
 
